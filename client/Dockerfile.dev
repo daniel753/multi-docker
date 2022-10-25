@@ -1,0 +1,8 @@
+FROM node:16-alpine
+WORKDIR '/app'
+COPY . .
+RUN npm install -g eslint --unsafe-perm=true --allow-root
+RUN mkdir node_modules/.cache
+RUN touch node_modules/.cache/.eslintcache
+USER node
+CMD ["npm", "run", "start"]
