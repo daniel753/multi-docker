@@ -16,3 +16,8 @@ after_success:
   - docker build -t pixerflame/multi-nginx -f ./nginx 
   - docker build -t pixerflame/multi-server -f ./server 
   - docker build -t pixerflame/multi-worker -f ./worker 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push pixerflame/multi-client
+  - docker push pixerflame/multi-nginx
+  - docker push pixerflame/multi-server
+  - docker push pixerflame/multi-worker
